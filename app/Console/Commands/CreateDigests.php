@@ -26,7 +26,7 @@ class CreateDigests extends Command {
      * @return int
      */
     public function handle() {
-        if (!(new Digest)->createDigests()) {
+        if (!(new Digest)->createDigests(config('feed.feeds.main.summary-only'))) {
             return Command::FAILURE;
         }
 

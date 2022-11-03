@@ -44,9 +44,11 @@ class Digest extends Model implements Feedable {
     /**
      * Generates digests for configured feeds.
      *
+     * @param bool $summaryOnly
+     *
      * @return bool
      */
-    public function createDigests() {
+    public function createDigests($summaryOnly = true) {
         foreach (config('subscriptions') as $feed) {
             // Read feed contents
             $feedContents = FeedReader::read($feed);
@@ -77,7 +79,11 @@ class Digest extends Model implements Feedable {
             ksort($digestItems);
 
             if (count($digestItems)) {
-                $digestItems = array_map(function ($item) {
+                $digestItems = array_map(function ($item) use ($summaryOnly) {
+                    if ($summaryOnly) {
+                        return '<div style="margin-bottom:.5em;"><h4><a href="'.$item['link'].'">'.$item['title'].'</a> ('.$item['date'].')</h4></div>';
+                    }
+
                     return '<div style="margin-bottom:.5em;"><h4><a href="'.$item['link'].'">'.$item['title'].'</a><br/>'.$item['date'].'</h4> '.$item['contents'].'</div>';
                 }, $digestItems);
 
