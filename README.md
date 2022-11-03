@@ -1,6 +1,6 @@
 # Procyon
 
-Procyon is a simple Laravel-based project for generating daily digests for configured RSS feeds. It then generates its own feed containing all the digests it generates, allowing you to get daily summaries of feeds' contents as one update per feed per day rather than potentially many, while still enjoying the benefits of RSS.
+Procyon is a simple Laravel-based project for generating daily digests for configured RSS feeds. It then generates its own feed containing all the digests it generates, allowing you to get daily summaries of feeds' contents as one update per feed per day rather than potentially many, while still enjoying the benefits of RSS. It's worth noting that it employs minimal styling, allowing whatever settings you have for your feed reader to do their work (operating under the assumption that you have these configured as best suits your needs).
 
 Digests contain only the items since the last digest (or, if there is no extant digest for a feed, since the day prior.) And then, of course, your feed reader should be able to take it from there.
 
