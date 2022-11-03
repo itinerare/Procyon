@@ -4,11 +4,10 @@ namespace Tests\Feature;
 
 use App\Models\Digest;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class FeedViewTest extends TestCase {
-    use RefreshDatabase, WithFaker;
+    use RefreshDatabase;
 
     /******************************************************************************
         PUBLIC: RSS FEEDS
