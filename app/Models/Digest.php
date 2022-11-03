@@ -18,7 +18,7 @@ class Digest extends Model implements Feedable {
      * @var array
      */
     protected $fillable = [
-        'name', 'url', 'text',
+        'name', 'url', 'text', 'last_entry',
     ];
 
     /**
@@ -27,6 +27,15 @@ class Digest extends Model implements Feedable {
      * @var string
      */
     protected $table = 'digests';
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'last_entry' => 'datetime',
+    ];
 
     /**
      * Whether the model contains timestamps to be saved and updated.
@@ -57,7 +66,11 @@ class Digest extends Model implements Feedable {
             // so we can fetch only updates made since then
             $lastDigest = $this->where('url', $feed)->orderBy('created_at', 'DESC')->first();
             if ($lastDigest) {
-                $startAt = $lastDigest->created_at;
+                // The time zone of the feed may not line up with that of this
+                // app, and in fact likely won't. Consequently, it makes more sense
+                // to start at the timestamp of the last entry in the prior digest
+                // than to start at the time of its creation.
+                $startAt = $lastDigest->last_entry ?? $lastDigest->created_at;
             } else {
                 // If there is no existing digest, just start at yesterday
                 $startAt = Carbon::yesterday();
@@ -79,7 +92,7 @@ class Digest extends Model implements Feedable {
             ksort($digestItems);
 
             if (count($digestItems)) {
-                $digestItems = array_map(function ($item) use ($summaryOnly) {
+                $digestContents = array_map(function ($item) use ($summaryOnly) {
                     if ($summaryOnly) {
                         return '<div style="margin-bottom:.5em;"><h4><a href="'.$item['link'].'">'.$item['title'].'</a> ('.$item['date'].')</h4></div>';
                     }
@@ -88,9 +101,10 @@ class Digest extends Model implements Feedable {
                 }, $digestItems);
 
                 $this->create([
-                    'name' => $feedContents->get_title(),
-                    'url'  => $feed,
-                    'text' => '<h1>'.$feedContents->get_title().' Digest for '.Carbon::today()->toFormattedDateString().'</h1>'.implode('', $digestItems),
+                    'name'       => $feedContents->get_title(),
+                    'url'        => $feed,
+                    'text'       => '<h1>'.$feedContents->get_title().' Digest for '.Carbon::today()->toFormattedDateString().'</h1>'.implode('', $digestContents),
+                    'last_entry' => Carbon::parse(end($digestItems)['date']),
                 ]);
             }
         }
