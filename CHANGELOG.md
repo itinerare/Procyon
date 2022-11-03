@@ -4,6 +4,22 @@
 All notable changes to this project will be documented in this file.
 <!--- END HEADER -->
 
+## [1.1.0](https://github.com/itinerare/Procyon/compare/v1.0.0...v1.1.0) (2022-11-03)
+
+### Features
+
+
+##### Digests
+
+* Better startAt time ([1c835e](https://github.com/itinerare/Procyon/commit/1c835e87f8aec682755880492a5fd396e7548487))
+
+### Bug Fixes
+
+* Change example .env to production values ([f23b52](https://github.com/itinerare/Procyon/commit/f23b52b5814de04c384f8f2ee6a9bed53c5fa4df))
+
+
+---
+
 ## [1.0.0](https://github.com/itinerare/Procyon/compare/40551777f5654808402674dd61ecdea8c5cbdfa5...v1.0.0) (2022-11-03)
 
 ### Features
