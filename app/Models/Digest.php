@@ -76,14 +76,14 @@ class Digest extends Model implements Feedable {
             }
             ksort($digestItems);
 
-            if(count($digestItems)) {
+            if (count($digestItems)) {
                 $digestItems = array_map(function ($item) {
                     return '<div style="margin-bottom:.5em;"><h4><a href="'.$item['link'].'">'.$item['title'].'</a><br/>'.$item['date'].'</h4> '.$item['contents'].'</div>';
                 }, $digestItems);
 
                 $this->create([
                     'name' => $feedContents->get_title(),
-                    'url' => $feed,
+                    'url'  => $feed,
                     'text' => '<h1>'.$feedContents->get_title().' Digest for '.Carbon::today()->toFormattedDateString().'</h1>'.implode('', $digestItems),
                 ]);
             }

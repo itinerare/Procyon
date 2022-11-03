@@ -5,8 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Digest;
 use Illuminate\Console\Command;
 
-class CreateDigests extends Command
-{
+class CreateDigests extends Command {
     /**
      * The name and signature of the console command.
      *
@@ -26,11 +25,10 @@ class CreateDigests extends Command
      *
      * @return int
      */
-    public function handle()
-    {
-        if(!(new Digest)->createDigests()) {
+    public function handle() {
+        if (!(new Digest)->createDigests()) {
             return Command::FAILURE;
-        };
+        }
 
         return Command::SUCCESS;
     }
