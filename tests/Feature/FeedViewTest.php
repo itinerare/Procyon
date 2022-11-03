@@ -19,14 +19,6 @@ class FeedViewTest extends TestCase {
     }
 
     /**
-     * Test feed index access.
-     */
-    public function testGetFeedIndex() {
-        $this->get('feed')
-            ->assertStatus(200);
-    }
-
-    /**
      * Test feed access.
      *
      * @dataProvider feedProvider
