@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Digest;
+
 return [
     'feeds' => [
         'main' => [
@@ -11,15 +13,15 @@ return [
              * You can also pass an argument to that method. Note that their key must be the name of the parameter:
              * [App\Model::class, 'getAllFeedItems', 'parameterName' => 'argument']
              */
-            'items' => '',
+            'items' => [Digest::class, 'getFeedItems'],
 
             /*
              * The feed will be available on this url.
              */
-            'url' => '',
+            'url' => 'feed',
 
-            'title'       => 'My feed',
-            'description' => 'The description of the feed.',
+            'title'       => 'Daily Digests',
+            'description' => 'Daily digests of select RSS feeds.',
             'language'    => 'en-US',
 
             /*
