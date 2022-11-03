@@ -30,7 +30,7 @@ class FeedViewTest extends TestCase {
             $digest = Digest::factory()->create();
         }
 
-        $response = $this->get('feed')
+        $response = $this->get('/')
             ->assertStatus($status);
 
         if ($withDigest && $status == 200) {
