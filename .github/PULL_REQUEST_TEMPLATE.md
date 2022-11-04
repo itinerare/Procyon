@@ -36,7 +36,7 @@
 - [ ] My code follows the code style of this project -OR- my changes only impact code for which style is automatically enforced (PHP).
 - [ ] My change requires a change to the documentation.
 - [ ] I have updated the documentation accordingly.
-- [ ] I have read the **CONTRIBUTING** document.
+<!-- - [ ] I have read the **CONTRIBUTING** document. -->
 - [ ] I have added and/or updated tests to cover my changes (if applicable).
 - [ ] All tests passed, including new tests (if applicable).
 - [ ] I license my contributions to this project under [the MIT License](../LICENSE-MIT.md), either directly or as a consequence of agreeing with the contributor license agreement printed below.
