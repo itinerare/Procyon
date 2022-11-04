@@ -79,15 +79,17 @@ class Digest extends Model implements Feedable {
             // Iterate through entries, taking only ones created after the start time
             $digestItems = [];
             foreach ($feedContents->get_items() as $item) {
-                if (Carbon::parse($item->get_date()) > $startAt) {
+                $itemDate = Carbon::parse($item->get_date());
+                if ($itemDate > $startAt) {
                     // Items are keyed by date/time so that they can be sorted in chronological order
-                    $digestItems[$item->get_date()] = [
+                    $digestItems[$itemDate->toJSON()] = [
                         'title'    => $item->get_title(),
-                        'date'     => $item->get_date(),
+                        'date'     => $itemDate,
                         'contents' => $item->get_content(),
                         'link'     => $item->get_link(),
                     ];
                 }
+                unset($itemDate);
             }
             ksort($digestItems);
 
@@ -104,7 +106,7 @@ class Digest extends Model implements Feedable {
                     'name'       => $feedContents->get_title(),
                     'url'        => $feed,
                     'text'       => '<h1>'.$feedContents->get_title().' Digest for '.Carbon::today()->toFormattedDateString().'</h1>'.implode('', $digestContents),
-                    'last_entry' => Carbon::parse(end($digestItems)['date']),
+                    'last_entry' => end($digestItems)['date'],
                 ]);
             }
         }
