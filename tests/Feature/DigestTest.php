@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 
-class FeedViewTest extends TestCase {
+class DigestTest extends TestCase {
     use RefreshDatabase;
 
     protected function setUp(): void {
