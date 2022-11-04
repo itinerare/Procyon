@@ -43,9 +43,9 @@ Ensure that the scheduler is added to cron, like so:
 * * * * * cd ~/site-name.com/www && php artisan schedule:run >> /dev/null 2>&1
 ```
 
-Digests are automatically generated daily, or may be manually generated using the command `php artisan generate-digests`.
+Digests are automatically generated daily, or may be manually generated using the command `php artisan create-digests`.
 
-The resulting feed can be accessed at `site-name.com/feed`, substituting in your domain.
+The resulting feed can be accessed at `site-name.com`, substituting in your domain.
 
 ## Contact
 If you have any questions, please contact me via email at [queries@itinerare.net](emailto:queries@itinerare.net).
