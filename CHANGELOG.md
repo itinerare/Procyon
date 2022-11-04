@@ -4,6 +4,19 @@
 All notable changes to this project will be documented in this file.
 <!--- END HEADER -->
 
+## [1.1.1](https://github.com/itinerare/Procyon/compare/v1.1.0...v1.1.1) (2022-11-04)
+
+### Bug Fixes
+
+
+##### Digests
+
+* Add 'untitled post' filler title if none provided ([59463b](https://github.com/itinerare/Procyon/commit/59463bf679f68645286296650e8ee79817d6354a))
+* Better chronological ordering of items ([c0fa4b](https://github.com/itinerare/Procyon/commit/c0fa4bcd5cb62d76d5afdcdb486947476b78e7c0))
+
+
+---
+
 ## [1.1.0](https://github.com/itinerare/Procyon/compare/v1.0.0...v1.1.0) (2022-11-03)
 
 ### Features
