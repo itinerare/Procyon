@@ -18,7 +18,7 @@ $ git clone https://github.com/itinerare/procyon.git
 $ cp .env.example .env
 ```
 
-This should not need any adjustments by default.
+This should not need any adjustments by default (note that it's configured for a production environment).
 
 ### Setting up
 
@@ -30,7 +30,7 @@ $ composer install
 Generate app key, create the database, and run migrations:
 ```
 $ php artisan key:generate
-touch database/database.sqlite
+$ touch database/database.sqlite
 $ php artisan migrate
 ```
 
