@@ -3,18 +3,40 @@
 namespace Tests\Feature;
 
 use App\Models\Digest;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 
 class FeedViewTest extends TestCase {
     use RefreshDatabase;
 
-    /******************************************************************************
-        PUBLIC: RSS FEEDS
-    *******************************************************************************/
-
     protected function setUp(): void {
         parent::setUp();
+    }
+
+    /**
+     * Test digest creation using a live feed.
+     *
+     * @dataProvider digestProvider
+     *
+     * @param bool $summaryOnly
+     */
+    public function testCreateDigest($summaryOnly) {
+        Config::set('subscriptions', ['https://itinerare.net/feeds/programming']);
+        $status = (new Digest)->createDigests($summaryOnly, Carbon::parse(01 / 01 / 2000));
+
+        $this->assertTrue($status);
+        $this->assertDatabaseHas('digests', [
+            'url' => 'https://itinerare.net/feeds/programming',
+        ]);
+    }
+
+    public function digestProvider() {
+        return [
+            'summary only'  => [1],
+            'full contents' => [0],
+        ];
     }
 
     /**

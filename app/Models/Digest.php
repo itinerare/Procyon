@@ -53,27 +53,30 @@ class Digest extends Model implements Feedable {
     /**
      * Generates digests for configured feeds.
      *
-     * @param bool $summaryOnly
+     * @param bool                $summaryOnly
+     * @param \Carbon\Carbon|null $startAt
      *
      * @return bool
      */
-    public function createDigests($summaryOnly = true) {
+    public function createDigests($summaryOnly = true, $startAt = null) {
         foreach (config('subscriptions') as $feed) {
             // Read feed contents
             $feedContents = FeedReader::read($feed);
 
-            // Find the date of the last digest for this feed,
-            // so we can fetch only updates made since then
-            $lastDigest = $this->where('url', $feed)->orderBy('created_at', 'DESC')->first();
-            if ($lastDigest) {
-                // The time zone of the feed may not line up with that of this
-                // app, and in fact likely won't. Consequently, it makes more sense
-                // to start at the timestamp of the last entry in the prior digest
-                // than to start at the time of its creation.
-                $startAt = $lastDigest->last_entry ?? $lastDigest->created_at;
-            } else {
-                // If there is no existing digest, just start at yesterday
-                $startAt = Carbon::yesterday();
+            if (!isset($startAt)) {
+                // Find the date of the last digest for this feed,
+                // so we can fetch only updates made since then
+                $lastDigest = $this->where('url', $feed)->orderBy('created_at', 'DESC')->first();
+                if ($lastDigest) {
+                    // The time zone of the feed may not line up with that of this
+                    // app, and in fact likely won't. Consequently, it makes more sense
+                    // to start at the timestamp of the last entry in the prior digest
+                    // than to start at the time of its creation.
+                    $startAt = $lastDigest->last_entry ?? $lastDigest->created_at;
+                } else {
+                    // If there is no existing digest, just start at yesterday
+                    $startAt = Carbon::yesterday();
+                }
             }
 
             // Iterate through entries, taking only ones created after the start time
