@@ -96,10 +96,10 @@ class Digest extends Model implements Feedable {
             if (count($digestItems)) {
                 $digestContents = array_map(function ($item) use ($summaryOnly) {
                     if ($summaryOnly) {
-                        return '<div style="margin-bottom:.5em;"><h4><a href="'.$item['link'].'">'.$item['title'].'</a> ('.$item['date'].')</h4></div>';
+                        return '<div style="margin-bottom:.5em;"><h4><a href="'.$item['link'].'">'.($item['title'] ?? 'Untitled Post').'</a> ('.$item['date'].')</h4></div>';
                     }
 
-                    return '<div style="margin-bottom:.5em;"><h4><a href="'.$item['link'].'">'.$item['title'].'</a><br/>'.$item['date'].'</h4> '.$item['contents'].'</div>';
+                    return '<div style="margin-bottom:.5em;"><h4><a href="'.$item['link'].'">'.($item['title'] ?? 'Untitled Post').'</a><br/>'.$item['date'].'</h4> '.$item['contents'].'</div>';
                 }, $digestItems);
 
                 $this->create([
