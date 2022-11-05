@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use FeedReader;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
+use Vedmant\FeedReader\Facades\FeedReader;
 
 class Digest extends Model implements Feedable {
     use HasFactory;
