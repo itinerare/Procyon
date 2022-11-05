@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Digest;
+use App\Models\Subscription;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Config;
@@ -16,6 +17,18 @@ class DigestTest extends TestCase {
     }
 
     /**
+     * Test subscription creation.
+     */
+    public function testCreateSubscription() {
+        Config::set('subscriptions', ['https://itinerare.net/feeds/programming']);
+        $this->artisan('update-subscriptions')->assertExitCode(0);
+
+        $this->assertDatabaseHas('subscriptions', [
+            'url' => 'https://itinerare.net/feeds/programming',
+        ]);
+    }
+
+    /**
      * Test digest creation using a live feed.
      *
      * @dataProvider digestProvider
@@ -24,7 +37,9 @@ class DigestTest extends TestCase {
      */
     public function testCreateDigest($summaryOnly) {
         Config::set('subscriptions', ['https://itinerare.net/feeds/programming']);
-        $status = (new Digest)->createDigests($summaryOnly, Carbon::parse(01 / 01 / 2000));
+        $this->artisan('update-subscriptions')->assertExitCode(0);
+
+        $status = (new Subscription)->createDigests($summaryOnly, Carbon::parse(01 / 01 / 2000));
 
         $this->assertTrue($status);
         $this->assertDatabaseHas('digests', [
