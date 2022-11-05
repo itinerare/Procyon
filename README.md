@@ -34,9 +34,9 @@ $ touch database/database.sqlite
 $ php artisan migrate
 ```
 
-Add feeds to `config/subscriptions.php` per the instructions in that file. Optionally, configure your time zone in `config/app.php` (see [here](https://www.php.net/manual/en/timezones.php) for a list of PHP-supported time zones).
+Add feeds to `config/procyon-settings.php` per the instructions in that file. Optionally, configure your time zone in `config/app.php` (see [here](https://www.php.net/manual/en/timezones.php) for a list of PHP-supported time zones).
 
-By default, only the date and title/summary of each item are added to the digest; to include the full text of each item, change the `summary-only` value in `config/feed.php` to `false`. 
+By default, only the date and title/summary of each item are added to the digest; to include the full text of each item, change the `summary-only` value in `config/procyon-settings.php` to `false`. 
 
 Ensure that the scheduler is added to cron, like so:
 ```

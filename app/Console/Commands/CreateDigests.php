@@ -31,7 +31,7 @@ class CreateDigests extends Command {
         // not, etc.
         $this->call('update-subscriptions');
 
-        if (!(new Subscription)->createDigests(config('feed.feeds.main.summary-only'))) {
+        if (!(new Subscription)->createDigests(config('procyon-settings.summary-only'))) {
             return Command::FAILURE;
         }
 

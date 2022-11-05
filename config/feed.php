@@ -23,7 +23,6 @@ return [
             'title'        => 'Daily Digests',
             'description'  => 'Daily digests of select RSS feeds.',
             'language'     => 'en-US',
-            'summary-only' => true,
 
             /*
              * The image to display for the feed. For Atom feeds, this is displayed as

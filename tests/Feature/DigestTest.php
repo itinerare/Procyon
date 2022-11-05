@@ -13,13 +13,14 @@ class DigestTest extends TestCase {
 
     protected function setUp(): void {
         parent::setUp();
+
+        Config::set('procyon-settings.feeds', ['https://itinerare.net/feeds/programming']);
     }
 
     /**
      * Test subscription creation.
      */
     public function testCreateSubscription() {
-        Config::set('subscriptions', ['https://itinerare.net/feeds/programming']);
         $this->artisan('update-subscriptions')->assertExitCode(0);
 
         $this->assertDatabaseHas('subscriptions', [
@@ -35,7 +36,6 @@ class DigestTest extends TestCase {
      * @param bool $summaryOnly
      */
     public function testCreateDigest($summaryOnly) {
-        Config::set('subscriptions', ['https://itinerare.net/feeds/programming']);
         $this->artisan('update-subscriptions')->assertExitCode(0);
 
         $status = (new Subscription)->createDigests($summaryOnly, Carbon::parse(01 / 01 / 2000));

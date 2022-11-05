@@ -27,7 +27,7 @@ class UpdateSubscriptions extends Command {
      */
     public function handle() {
         // Add new subscriptions
-        foreach (config('subscriptions') as $feed) {
+        foreach (config('procyon-settings.feeds') as $feed) {
             if (!Subscription::where('url', $feed)->exists()) {
                 Subscription::create([
                     'url' => $feed,
@@ -38,7 +38,7 @@ class UpdateSubscriptions extends Command {
         // Remove any that are on record but absent from the config file
         // Note that this does not delete old digests!
         $subscriptions = Subscription::pluck('url')->toArray();
-        $missing = array_merge(array_diff(config('subscriptions'), $subscriptions), array_diff($subscriptions, config('subscriptions')));
+        $missing = array_merge(array_diff(config('procyon-settings.feeds'), $subscriptions), array_diff($subscriptions, config('procyon-settings.feeds')));
 
         if (count($missing)) {
             foreach ($missing as $sub) {
