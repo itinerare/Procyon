@@ -1,10 +1,9 @@
 {
-    "name": "laravel/laravel",
+    "name": "itinerare/procyon",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "A simple Laravel-based project for generating daily digests for configured RSS feeds.",
     "keywords": [
-        "framework",
-        "laravel"
+        "rss"
     ],
     "license": "MIT",
     "require": {
