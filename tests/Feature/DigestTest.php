@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Models\Digest;
 use App\Models\Subscription;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -51,34 +50,6 @@ class DigestTest extends TestCase {
         return [
             'summary only'  => [1],
             'full contents' => [0],
-        ];
-    }
-
-    /**
-     * Test feed access.
-     *
-     * @dataProvider feedProvider
-     *
-     * @param int   $status
-     * @param mixed $withDigest
-     */
-    public function testGetFeed($withDigest, $status) {
-        if ($withDigest) {
-            $digest = Digest::factory()->create();
-        }
-
-        $response = $this->get('/')
-            ->assertStatus($status);
-
-        if ($withDigest && $status == 200) {
-            $response->assertSee($digest->url);
-        }
-    }
-
-    public function feedProvider() {
-        return [
-            'feed'             => [0, 200],
-            'feed with digest' => [1, 200],
         ];
     }
 }
