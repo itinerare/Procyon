@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Digest;
+use App\Models\Subscription;
 use Illuminate\Console\Command;
 
 class CreateDigests extends Command {
@@ -18,7 +18,7 @@ class CreateDigests extends Command {
      *
      * @var string
      */
-    protected $description = 'Generates daily digests for configured feeds.';
+    protected $description = 'Generates daily digests for each subscription.';
 
     /**
      * Execute the console command.
@@ -26,7 +26,12 @@ class CreateDigests extends Command {
      * @return int
      */
     public function handle() {
-        if (!(new Digest)->createDigests(config('feed.feeds.main.summary-only'))) {
+        // Subscriptions should be updated before digests are created
+        // so that any new subscriptions can receive digests and removed ones
+        // not, etc.
+        $this->call('update-subscriptions');
+
+        if (!(new Subscription)->createDigests(config('feed.feeds.main.summary-only'))) {
             return Command::FAILURE;
         }
 
