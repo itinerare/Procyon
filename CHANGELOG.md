@@ -4,6 +4,22 @@
 All notable changes to this project will be documented in this file.
 <!--- END HEADER -->
 
+## [1.2.0](https://github.com/itinerare/Procyon/compare/v1.1.1...v1.2.0) (2022-11-05)
+
+### Features
+
+
+##### Digests
+
+* Link source in digest title ([9c17e8](https://github.com/itinerare/Procyon/commit/9c17e8c10c32e535320632a7bcb4816858b3218c))
+
+##### Tests
+
+* Add digest generation tests ([36ed0e](https://github.com/itinerare/Procyon/commit/36ed0e238454326204b756c7237a39053b957830))
+
+
+---
+
 ## [1.1.1](https://github.com/itinerare/Procyon/compare/v1.1.0...v1.1.1) (2022-11-04)
 
 ### Bug Fixes
