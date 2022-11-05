@@ -39,7 +39,7 @@ class UpdateProcyonV2 extends Command {
             $this->line('Running migrations...');
             $this->call('migrate');
 
-            if(env('APP_ENV') == 'production') {
+            if (env('APP_ENV') == 'production') {
                 $this->line("\n".'Clearing and optimizing caches...');
                 $this->call('optimize');
             }
