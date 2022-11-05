@@ -108,7 +108,7 @@ class Digest extends Model implements Feedable {
                 $this->create([
                     'name'       => $feedContents->get_title(),
                     'url'        => $feed,
-                    'text'       => '<h1>'.$feedContents->get_title().' Digest for '.Carbon::today()->toFormattedDateString().'</h1>'.implode('', $digestContents),
+                    'text'       => '<h1><a href="'.$feedContents->get_link().'">'.$feedContents->get_title().'</a> Digest for '.Carbon::today()->toFormattedDateString().'</h1>'.implode('', $digestContents),
                     'last_entry' => end($digestItems)['date'],
                 ]);
             }
