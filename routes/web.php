@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,3 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::feeds();
+
+Route::controller(Controller::class)->group(function () {
+    Route::get('subscriptions', 'getSubscriptions');
+    Route::post('subscriptions/password', 'getSubscriptions');
+    Route::post('subscriptions', 'postSubscriptions');
+});

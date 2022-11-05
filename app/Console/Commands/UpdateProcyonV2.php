@@ -69,7 +69,7 @@ class UpdateProcyonV2 extends Command {
                 // trouble of finding the most recent digest to check it
                 $this->line("\n".'Finding last entry information for subscriptions...');
                 foreach (Subscription::with('digests')->get() as $subscription) {
-                    if ($subscription->digests->sortByDesc('created_at')->count()) {
+                    if ($subscription->digests->count()) {
                         $subscription->update([
                             'last_entry' => $subscription->digests->sortByDesc('created_at')->first()->last_entry ?? null,
                         ]);

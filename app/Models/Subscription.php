@@ -52,7 +52,7 @@ class Subscription extends Model {
      * Get digests for this subscription.
      */
     public function digests() {
-        return $this->hasMany(Digest::class);
+        return $this->hasMany(Digest::class)->orderBy('created_at', 'DESC');
     }
 
     /**********************************************************************************************
@@ -60,6 +60,47 @@ class Subscription extends Model {
         OTHER FUNCTIONS
 
     **********************************************************************************************/
+
+    /**
+     * Updates subscriptions.
+     *
+     * @param array $data
+     *
+     * @return bool
+     */
+    public function updateSubscriptions($data) {
+        if(!isset($data)) {
+            $data = [];
+        }
+
+        if($this->all()->count()) {
+            // Delete only removed subscriptions
+            foreach($this->all() as $subscription) {
+                if(!array_key_exists($subscription->id, $data)) {
+                    $subscription->delete();
+                }
+            }
+        }
+
+        foreach($data as $key=>$url) {
+            if($this->where('id', $key)->exists()) {
+                $subscription = $this->where('id', $key)->first();
+                $subscription->update([
+                    'url' => $url,
+                ]);
+            } else {
+                $subscription = $this->create([
+                    'url' => $url,
+                ]);
+
+                if(!$subscription) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
 
     /**
      * Generates digests for configured feeds.

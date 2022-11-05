@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider {
@@ -25,5 +26,7 @@ class AppServiceProvider extends ServiceProvider {
         // Since this is a performance concern only, don't halt
         // production for violations.
         Model::preventLazyLoading(!$this->app->isProduction());
+
+        Paginator::useBootstrapFour();
     }
 }

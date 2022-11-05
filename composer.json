@@ -11,9 +11,12 @@
         "ext-sqlite3": "*",
         "doctrine/dbal": "^3.5",
         "guzzlehttp/guzzle": "^7.2",
+        "laracasts/flash": "^3.2",
         "laravel/framework": "^9.19",
+        "laravel/helpers": "^1.5",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "laravelcollective/html": "^6.3",
         "spatie/laravel-feed": "^4.1",
         "vedmant/laravel-feed-reader": "^1.5"
     },
