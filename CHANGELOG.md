@@ -4,6 +4,41 @@
 All notable changes to this project will be documented in this file.
 <!--- END HEADER -->
 
+## [2.0.0](https://github.com/itinerare/Procyon/compare/v1.2.0...v2.0.0) (2022-11-06)
+
+### ⚠ BREAKING CHANGES
+
+
+##### Digests
+
+* Move subscription info to table ([d4493f](https://github.com/itinerare/Procyon/commit/d4493ffd2fedf6432a4b29337b38c55e53cb3cd8))
+
+### Features
+
+
+##### Commands
+
+* Improve v2 update command ([500340](https://github.com/itinerare/Procyon/commit/50034089f2d24362fe92e2a6b44d353aefa6af14))
+
+##### Subscriptions
+
+* Add optional web UI for subscription management ([dc9eba](https://github.com/itinerare/Procyon/commit/dc9eba771ccb9ea10637ff1116f2838016f252ba))
+
+##### Tests
+
+* Add subscription creation test ([abc9ab](https://github.com/itinerare/Procyon/commit/abc9abc62dde48f075f0f2bd4b9513688c0be1c8))
+* Add subscription factory, UI tests ([f95351](https://github.com/itinerare/Procyon/commit/f9535184527a8c7ee2c35a5fc14687a3b02aed6c))
+
+### Bug Fixes
+
+
+##### Tests
+
+* Enable web interface for UI tests ([a5a26d](https://github.com/itinerare/Procyon/commit/a5a26da141f45628dc5ca772bbf40aa33ed1e1ea))
+
+
+---
+
 ## [1.2.0](https://github.com/itinerare/Procyon/compare/v1.1.1...v1.2.0) (2022-11-05)
 
 ### Features
