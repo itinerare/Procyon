@@ -8,7 +8,8 @@
             </div>
             <div class="card-body">
                 <p>
-                    Here you can manage the feeds that Procyon is subscribed to. Note that it's recommended to add new feeds in completely new rows rather than replacing the URLs in old rows, as errors might otherwise ensue.
+                    Here you can manage the feeds that Procyon is subscribed to. Note that it's recommended to add new feeds
+                    in completely new rows rather than replacing the URLs in old rows, as errors might otherwise ensue.
                 </p>
 
                 {!! Form::open(['url' => 'subscriptions']) !!}
