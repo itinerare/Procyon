@@ -5,7 +5,7 @@ return [
     // subscriptions. Note that if your Procyon instance is web-accessible,
     // you should set a password for this in your .env file (not here!)
     // or else anyone will be able to modify your subscription settings!
-    'web-interface' => true,
+    'web-interface' => false,
     'web-password'  => env('PROCYON_WEB_PASSWORD'),
 
     // Whether digests are generated with summaries only
