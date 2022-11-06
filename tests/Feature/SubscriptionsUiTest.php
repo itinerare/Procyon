@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\Subscription;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 
 class SubscriptionsUiTest extends TestCase {
@@ -12,6 +13,8 @@ class SubscriptionsUiTest extends TestCase {
 
     protected function setUp(): void {
         parent::setUp();
+
+        Config::set('procyon-settings.web-interface', true);
     }
 
     /**
