@@ -69,21 +69,21 @@ class Subscription extends Model {
      * @return bool
      */
     public function updateSubscriptions($data) {
-        if(!isset($data)) {
+        if (!isset($data)) {
             $data = [];
         }
 
-        if($this->all()->count()) {
+        if ($this->all()->count()) {
             // Delete only removed subscriptions
-            foreach($this->all() as $subscription) {
-                if(!array_key_exists($subscription->id, $data)) {
+            foreach ($this->all() as $subscription) {
+                if (!array_key_exists($subscription->id, $data)) {
                     $subscription->delete();
                 }
             }
         }
 
-        foreach($data as $key=>$url) {
-            if($this->where('id', $key)->exists()) {
+        foreach ($data as $key=>$url) {
+            if ($this->where('id', $key)->exists()) {
                 $subscription = $this->where('id', $key)->first();
                 $subscription->update([
                     'url' => $url,
@@ -93,7 +93,7 @@ class Subscription extends Model {
                     'url' => $url,
                 ]);
 
-                if(!$subscription) {
+                if (!$subscription) {
                     return false;
                 }
             }
