@@ -50,7 +50,6 @@ class Controller extends BaseController {
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postSubscriptions(Request $request, Subscription $model) {
-
         if ($model->updateSubscriptions($request->get('url'))) {
             flash('Subscriptions updated successfully.')->success();
         } else {
