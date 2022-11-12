@@ -4,6 +4,8 @@ Procyon is a simple Laravel-based project for generating daily digests for confi
 
 Digests contain only the items since the last digest (or, if there is no extant digest for a feed, since the day prior.) And then, of course, your feed reader should be able to take it from there.
 
+- Support Discord: https://discord.gg/mVqUzgQXMd
+
 ## Setup
 
 ### Obtain a copy of the code
