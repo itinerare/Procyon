@@ -40,7 +40,7 @@ class Controller extends BaseController {
 
         return view('subscriptions', [
             'allowAccess'   => $allowAccess ?? false,
-            'subscriptions' => Subscription::with('digests')->get(),
+            'subscriptions' => Subscription::with('digests')->orderBy('url')->get(),
         ]);
     }
 
