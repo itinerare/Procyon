@@ -13,7 +13,7 @@
         "postcss": "^8.4.19",
         "sass": "^1.56.1",
         "vite": "^3.2.5",
-        "blade-formatter": "^1.32.0",
+        "blade-formatter": "^1.32.3",
         "jquery": "^3.2"
     },
     "version": "2.0.0"
